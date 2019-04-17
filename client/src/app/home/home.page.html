@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      {{"HOME" | translate}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,8 +9,25 @@
 <ion-content>
   <div class="ion-padding">
       {{ "HELLO" | translate }}
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  </div>
+  <div>
+      <ion-card>
+          <ion-item>
+            <ion-label>
+              <strong>NAME OF THE SONG, BITCH</strong><br>
+              ARTIST MOTHERFUCKER
+            </ion-label>
+            <table>
+              <tr>
+                <td><ion-button fill="clear" size="large" slot="end"><ion-icon name="add"></ion-icon></ion-button></td>
+              </tr>
+              <tr>
+                <td><ion-button fill="clear" size="large" slot="end"><ion-icon name="remove"></ion-icon></ion-button></td>
+              </tr>
+            </table>
+          </ion-item>
+      
+        </ion-card>
   </div>
   <ion-button [routerLink]="['/serv-con']">serv-con</ion-button>
 </ion-content>
