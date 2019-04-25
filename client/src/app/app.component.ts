@@ -14,8 +14,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    translate: TranslateService,
-    private menu : MenuController
+    translate: TranslateService
   ) {
     this.initializeApp();
     translate.setDefaultLang('en');
@@ -27,19 +26,5 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-  }
-
-  openFirst() {
-    this.menu.enable(true, 'first');
-    this.menu.open('first');
-  }
-
-  openEnd() {
-    this.menu.open('end');
-  }
-
-  openCustom() {
-    this.menu.enable(true, 'custom');
-    this.menu.open('custom');
   }
 }

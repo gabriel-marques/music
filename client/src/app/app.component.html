@@ -1,22 +1,21 @@
 <ion-app>
-    <ion-split-pane contentId="menu-content">
-    <ion-menu side="start" menuId="first" contentId="menu-content">
-        <ion-header>
-          <ion-toolbar color="primary">
-            <ion-title>Start Menu</ion-title>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content>
-          <ion-list>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-            <ion-item>Menu Item</ion-item>
-          </ion-list>
-        </ion-content>
-      </ion-menu>
-
-  <ion-router-outlet id="menu-content"></ion-router-outlet>
-</ion-split-pane>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="tab-nexttracks">
+        <ion-icon name="heart"></ion-icon>
+        <ion-label>{{"tab_nexttracks" | translate}}</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="tab-lastadded">
+        <ion-icon name="list"></ion-icon>
+        <ion-label>{{"tab_lastadded" | translate}}</ion-label>
+        <ion-badge>6</ion-badge>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="tab-add">
+        <ion-icon name="add"></ion-icon>
+        <ion-label>{{"tab_add" | translate}}</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-app>

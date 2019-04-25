@@ -5,6 +5,9 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'serv-con', loadChildren: './serv-con/serv-con.module#ServConPageModule' },
+  { path: 'tab-nexttracks', loadChildren: './tab-nexttracks/tab-nexttracks.module#TabNexttracksPageModule' },
+  { path: 'tab-lastadded', loadChildren: './tab-lastadded/tab-lastadded.module#TabLastaddedPageModule' },
+  { path: 'tab-add', loadChildren: './tab-add/tab-add.module#TabAddPageModule' },
 ];
 
 @NgModule({
