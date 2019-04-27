@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Socket } from 'ng-socket-io';
 
 @Component({
   selector: 'app-tab-add',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabAddPage implements OnInit {
 
-  constructor() { }
+  track = '';
+
+  constructor( private socket: Socket) { }
 
   ngOnInit() {
   }
 
+  addTrack(){
+    this.socket.connect();
+    this.socket.emit('add-track', this.track);
+  }
 }

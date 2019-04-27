@@ -5,5 +5,11 @@
 </ion-header>
 
 <ion-content>
+    <ion-item>
+        <ion-label stacked>Add a track</ion-label>
+        <!-- [(ngmodel)] is the glue between the view and the variable in tab-add.page.ts-->
+        <ion-input type="text" [(ngModel)]="track" placeholder="Track"></ion-input>
+      </ion-item>
+      <button ion-button (click)="addTrack()">Add</button>
 
 </ion-content>
