@@ -12,4 +12,7 @@ export class ServConPage implements OnInit {
   ngOnInit() {
   }
 
+  coucou(){
+    console.log("BIIIIIITTTTTEEEEE");
+  }
 }
