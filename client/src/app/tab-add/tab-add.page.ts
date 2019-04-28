@@ -10,13 +10,16 @@ export class TabAddPage implements OnInit {
 
   track = '';
 
-  constructor( private socket: Socket) { }
+  constructor(private socket: Socket) {
+    this.socket.connect(); // connect to server one time 
+  }
 
   ngOnInit() {
   }
 
-  addTrack(){
-    this.socket.connect();
-    this.socket.emit('add-track', this.track);
+  // send a track to server
+  addTrack() {
+    this.socket.emit('add-track', { track: this.track, date: Date.now() });
+    this.track = '';
   }
 }

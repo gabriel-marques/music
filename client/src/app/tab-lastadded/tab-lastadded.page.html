@@ -5,5 +5,14 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-item *ngFor="let track of globalTracks.tracks">
+    <ion-label>{{track['track']}}</ion-label>
+    <ion-label>{{track['votes']}}</ion-label>
+    <ion-button fill="clear" size="large" slot="end" (click)="upvote(track['track'])">
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" size="large" slot="end" (click)="downvote(track['track'])">
+      <ion-icon name="remove"></ion-icon>
+    </ion-button>
+  </ion-item> 
 </ion-content>

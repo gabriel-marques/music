@@ -1,3 +1,4 @@
+import { GlobalService } from './global.service';
 import { Component } from '@angular/core';
 
 import { Platform, MenuController } from '@ionic/angular';
@@ -15,7 +16,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    translate: TranslateService
+    translate: TranslateService,
+    public globalTracks: GlobalService
   ) {
     this.initializeApp();
     translate.setDefaultLang('en');
