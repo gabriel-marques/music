@@ -15,6 +15,8 @@ import {HttpClientModule, HttpClient} from '@angular/common/http';
 // used to connect with server.io
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { GlobalService } from './global.service';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 const config: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,6 +41,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
+    LocalNotifications,
+    NetworkInterface,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     GlobalService
   ],

@@ -1,7 +1,7 @@
-import { TranslateLoader, TranslateService } from '@ngx-translate/core';
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { Socket } from 'ng-socket-io';
+import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +11,11 @@ import { Socket } from 'ng-socket-io';
 export class HomePage {
 
   nickname = '';
-  constructor(private menu: MenuController, private socket: Socket){
-
+  ipaddress = "";
+  constructor(private menu: MenuController, private socket: Socket, private networkInterface: NetworkInterface){
+    this.networkInterface.getWiFiIPAddress()
+    .then(address => this.ipaddress = address.ip)
+    .catch(error => console.log('unable to get IP address : ' + error));
   }
 
   joinChat() {

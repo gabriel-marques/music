@@ -1,3 +1,4 @@
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ng-socket-io';
 
@@ -10,7 +11,7 @@ export class TabAddPage implements OnInit {
 
   track = '';
 
-  constructor(private socket: Socket) {
+  constructor(private socket: Socket, public localNotifications: LocalNotifications) {
     this.socket.connect(); // connect to server one time 
   }
 
@@ -21,5 +22,11 @@ export class TabAddPage implements OnInit {
   addTrack() {
     this.socket.emit('add-track', { track: this.track, date: Date.now() });
     this.track = '';
+    this.localNotifications.schedule({
+      id: 2,
+      title: 'Local ILocalNotification Example',
+      text: 'Multi ILocalNotification 2',
+      icon: 'http://example.com/icon.png'
+    });
   }
 }

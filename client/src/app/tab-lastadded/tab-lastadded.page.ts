@@ -1,7 +1,9 @@
+//import { LocalNotifications } from '@ionic-native/local-notifications';
 import { GlobalService } from './../global.service';
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs/Observable';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({
   selector: 'app-tab-lastadded',
@@ -10,11 +12,17 @@ import { Observable } from 'rxjs/Observable';
 })
 export class TabLastaddedPage implements OnInit {
 
-  constructor(private socket: Socket, public globalTracks: GlobalService) {
+  constructor(private socket: Socket, public globalTracks: GlobalService, public localNotifications: LocalNotifications) {
     // subscribe to events of new tracks from server
     this.getNewTrack().subscribe(message => {
       // add track to global variable
       globalTracks.addTrack(message);
+      this.localNotifications.schedule({
+        id: 2,
+        title: 'Local ILocalNotification Example',
+        text: 'Multi ILocalNotification 2',
+        icon: 'http://example.com/icon.png'
+      });
     });
 
     // subscribe to upvotes
