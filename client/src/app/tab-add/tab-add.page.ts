@@ -21,12 +21,19 @@ export class TabAddPage implements OnInit {
   // send a track to server
   addTrack() {
     this.socket.emit('add-track', { track: this.track, date: Date.now() });
-    this.track = '';
+    this.localNotifications.requestPermission();
+    console.log(this.localNotifications.hasPermission());
     this.localNotifications.schedule({
-      id: 2,
-      title: 'Local ILocalNotification Example',
-      text: 'Multi ILocalNotification 2',
+      id: 1,
+      title: 'New song added',
+      text: this.track,
+      foreground : true,
+      actions: [
+        { id: 'yes', title: 'Yes' },
+        { id: 'no',  title: 'No' }
+      ],
       icon: 'http://example.com/icon.png'
     });
+    this.track = '';
   }
 }
