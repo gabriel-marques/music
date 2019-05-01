@@ -1,3 +1,4 @@
+import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 //import { LocalNotifications } from '@ionic-native/local-notifications';
 import { GlobalService } from './../global.service';
 import { Component, OnInit } from '@angular/core';
@@ -18,15 +19,22 @@ export class TabLastaddedPage implements OnInit {
       // add track to global variable
       globalTracks.addTrack(message);
       this.localNotifications.schedule({
-        id: 2,
-        title: 'Local ILocalNotification Example',
-        text: 'Multi ILocalNotification 2',
-        icon: 'http://example.com/icon.png'
+        id: 1,
+        title: 'New song added',
+        text: message['track'],
+        actions: [
+          { id: 'plus', title: 'up' },
+          { id: 'minus',  title: 'down' }
+        ],
+        foreground : true
       });
     });
 
-    // subscribe to upvotes
-    this.getVote().subscribe(message => {
+    this.localNotifications.on('plus').subscribe(notification => { console.log(notification); this.upvote(notification['text']);});
+    this.localNotifications.on('minus').subscribe(notification => { console.log(notification); this.downvote(notification['text']);}); 
+
+    // subscribe to upvotes 
+    this.getVote().subscribe(message => { 
       globalTracks.updateVote(message);
     });
 
