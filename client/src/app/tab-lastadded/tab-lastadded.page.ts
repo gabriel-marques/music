@@ -1,3 +1,4 @@
+import { Translater } from './../translater';
 import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 //import { LocalNotifications } from '@ionic-native/local-notifications';
 import { GlobalService } from './../global.service';
@@ -13,7 +14,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 })
 export class TabLastaddedPage implements OnInit {
 
-  constructor(private socket: Socket, public globalTracks: GlobalService, public localNotifications: LocalNotifications) {
+  constructor(private socket: Socket, public globalTracks: GlobalService, public localNotifications: LocalNotifications, translate : Translater) {
     // subscribe to events of new tracks from server
     this.getNewTrack().subscribe(message => {
       // add track to global variable
@@ -26,7 +27,7 @@ export class TabLastaddedPage implements OnInit {
           { id: 'plus', title: 'up' },
           { id: 'minus',  title: 'down' }
         ],
-        foreground : true
+        foreground : true 
       });
     });
 

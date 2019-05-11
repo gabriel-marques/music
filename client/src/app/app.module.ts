@@ -1,3 +1,4 @@
+import { Translater } from './translater';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -17,7 +18,7 @@ import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { GlobalService } from './global.service';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { NetworkInterface } from '@ionic-native/network-interface/ngx';
-const config: SocketIoConfig = { url: 'http://192.168.42.28:3001', options: {} };
+const config: SocketIoConfig = { url: 'http://192.168.1.104:3001', options: {} };
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -43,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SplashScreen,
     LocalNotifications,
     NetworkInterface,
+    Translater,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     GlobalService
   ],

@@ -25,6 +25,10 @@ export class GlobalService {
     this.tracks.splice(index,1); // delete the track
     this.tracks = [...this.tracks]; // force refresh of view
   }
+  
+  removeAllTracks(){
+    this.tracks = [...this.tracks];
+  }
 
   updateVote(track){
     // get index of track in global array

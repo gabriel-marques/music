@@ -1,3 +1,4 @@
+import { Translater } from './../translater';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ng-socket-io';
@@ -11,7 +12,7 @@ export class TabAddPage implements OnInit {
 
   track = '';
 
-  constructor(private socket: Socket, public localNotifications: LocalNotifications) {
+  constructor(private socket: Socket, public localNotifications: LocalNotifications, translate : Translater) {
     this.socket.connect(); // connect to server one time 
   }
 

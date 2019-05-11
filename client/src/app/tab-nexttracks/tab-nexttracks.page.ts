@@ -2,6 +2,7 @@ import { Observable } from 'rxjs/Observable';
 import { GlobalService } from './../global.service';
 import { Component, OnInit } from '@angular/core';
 import { Socket } from 'ng-socket-io';
+import { Translater } from '../translater';
 
 @Component({
   selector: 'app-tab-nexttracks',
@@ -10,7 +11,7 @@ import { Socket } from 'ng-socket-io';
 })
 export class TabNexttracksPage implements OnInit {
 
-  constructor(private socket: Socket, public globalTracks: GlobalService) { 
+  constructor(private socket: Socket, public globalTracks: GlobalService, translate: Translater) { 
     this.getNewTrack().subscribe(message => {
       // add track to global variable
       globalTracks.addTrack(message);
