@@ -98,6 +98,10 @@ export class MySocket {
     this.socket.emit('vote', { vote: "down", track: track });
   }
 
+sendNewMusic(track: string){
+    this.socket.emit('add-track', { track: track, date: Date.now() });
+  }
+
   connectToServer(){
     console.log("I'm throwed !!!!");
     this.socket.connect();  

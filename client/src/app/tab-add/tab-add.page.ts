@@ -1,7 +1,7 @@
+import { MySocket } from './../mySocket';
 import { Translater } from './../translater';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Component, OnInit } from '@angular/core';
-import { Socket } from 'ng-socket-io';
 
 @Component({
   selector: 'app-tab-add',
@@ -12,8 +12,9 @@ export class TabAddPage implements OnInit {
 
   track = '';
 
-  constructor(private socket: Socket, public localNotifications: LocalNotifications, translate : Translater) {
-    this.socket.connect(); // connect to server one time 
+  constructor(private socket: MySocket,
+              public localNotifications: LocalNotifications,
+              translate : Translater) {
   }
 
   ngOnInit() {
@@ -21,8 +22,8 @@ export class TabAddPage implements OnInit {
 
   // send a track to server
   addTrack() {
-    this.socket.emit('add-track', { track: this.track, date: Date.now() });
-    this.localNotifications.requestPermission();
+    this.socket.sendNewMusic(this.track);
+    //this.localNotifications.requestPermission();
     this.track = '';
   }
 }
