@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
+import { Translater } from './../translater';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-serv-con',
@@ -7,14 +9,15 @@ import { LoadingController } from '@ionic/angular';
   styleUrls: ['./serv-con.page.scss'],
 })
 export class ServConPage implements OnInit {
-
-  constructor(public loadingController: LoadingController) {
+  translate : Translater
+  constructor(public loadingController: LoadingController, translate : Translater, private router: Router) {
     this.presentLoading()
   }
 
   async presentLoading() {
     const loading = await this.loadingController.create({
-      message: 'Looking up for your friends, please wait for a second...',
+      spinner: "crescent",
+      message: 'Looking up for your friends, please wait for a second...',//this.translate.translateText("HELLO"),//
       duration: 6000
     });
     await loading.present();
@@ -33,6 +36,7 @@ export class ServConPage implements OnInit {
       translucent: true,
       cssClass: 'custom-class custom-loading'
     });
+    this.router.navigateByUrl('/tab-nexttracks')
     return await loading.present();
   }
 
