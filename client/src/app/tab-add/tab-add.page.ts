@@ -1,6 +1,7 @@
 import { MySocket } from './../mySocket';
 import { Translater } from './../translater';
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab-add',
@@ -12,7 +13,8 @@ export class TabAddPage implements OnInit {
   track = '';
 
   constructor(private socket: MySocket,
-              translate : Translater) {
+              private translate : Translater,
+              private toastController: ToastController) {
   }
 
   ngOnInit() {
@@ -24,6 +26,16 @@ export class TabAddPage implements OnInit {
       this.socket.sendNewMusic(this.track);
       //this.localNotifications.requestPermission();
       this.track = '';
+    }else{
+      this.presentEmptyField();
     }
+  }
+
+  async presentEmptyField() {
+    const toast = await this.toastController.create({
+      message: this.translate.translateText("EMPTYFIELD"),
+      duration: 2000
+    });
+    toast.present();
   }
 }

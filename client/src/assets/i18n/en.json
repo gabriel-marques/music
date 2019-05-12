@@ -3,5 +3,7 @@
 	"HOME"	: "Home",
 	"NEWSONGADDED" : "New song added",
 	"UP" : "up",
-	"down" : "down"
+	"down" : "down",
+	"EMPTYFIELD" : "Please, fill the field",
+	"ADDATRACK" : "Add a track"
 }
