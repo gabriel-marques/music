@@ -1,7 +1,8 @@
+import { MySocket } from './../mySocket';
 import { Observable } from 'rxjs/Observable';
 import { GlobalService } from './../global.service';
 import { Component, OnInit } from '@angular/core';
-import { Socket } from 'ng-socket-io';
+//import { Socket } from 'ng-socket-io';
 import { Translater } from '../translater';
 
 @Component({
@@ -11,8 +12,8 @@ import { Translater } from '../translater';
 })
 export class TabNexttracksPage implements OnInit {
 
-  constructor(private socket: Socket, public globalTracks: GlobalService, translate: Translater) { 
-    this.getNewTrack().subscribe(message => {
+  constructor(private socket: MySocket, public globalTracks: GlobalService, translate: Translater) { 
+  /*  this.getNewTrack().subscribe(message => {
       // add track to global variable
       globalTracks.addTrack(message);
     });
@@ -34,9 +35,9 @@ export class TabNexttracksPage implements OnInit {
     this.getDeletedSong().subscribe(message => {
       // look for track into array
       globalTracks.removeTrack(message);
-    });
+    });*/
   }
-
+/*
    // create an observer to listen to events "new-track" from socket
    getDeletedSong() {
     let observable = new Observable(observer => {
@@ -75,19 +76,23 @@ export class TabNexttracksPage implements OnInit {
     })
     return observable;
   }
-  ngOnInit() {
-  }
 
+*/
   upvote(track: string) {
-    this.socket.emit('vote', { vote: "up", track: track });
+    this.socket.upvote(track);
+    //this.socket.emit('vote', { vote: "up", track: track });
   }
 
   downvote(track: string) {
-    this.socket.emit('vote', { vote: "down", track: track });
+    this.socket.downvote(track);
+    //this.socket.emit('vote', { vote: "down", track: track });
   }
 
   orderByVotes() {
     return this.globalTracks.tracks.sort((n1,n2) => n2['votes'] - n1['votes']);
+  }
+
+  ngOnInit() {
   }
 
 }

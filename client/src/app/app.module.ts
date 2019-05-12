@@ -1,3 +1,4 @@
+import { MySocket } from './mySocket';
 import { Translater } from './translater';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -45,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LocalNotifications,
     NetworkInterface,
     Translater,
+    MySocket,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     GlobalService
   ],

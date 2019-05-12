@@ -1,3 +1,4 @@
+import { MySocket } from './mySocket';
 import { Translater } from './translater';
 import { GlobalService } from './global.service';
 import { Component } from '@angular/core';
@@ -5,6 +6,7 @@ import { Component } from '@angular/core';
 import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Socket } from 'ng-socket-io';
 //import {TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -12,6 +14,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+
+  socket : MySocket;
 
    constructor(
     private platform: Platform,
@@ -30,6 +34,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      //socket = new MySocket(this);
     });
   }
 }

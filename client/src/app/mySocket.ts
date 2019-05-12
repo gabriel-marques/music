@@ -1,42 +1,38 @@
-import { MySocket } from './../mySocket';
-import { Translater } from './../translater';
-import { NetworkInterface } from '@ionic-native/network-interface/ngx';
-//import { LocalNotifications } from '@ionic-native/local-notifications';
-import { GlobalService } from './../global.service';
-import { Component, OnInit } from '@angular/core';
-//import { Socket } from 'ng-socket-io';
 import { Observable } from 'rxjs/Observable';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { GlobalService } from './global.service';
+import { Injectable } from '@angular/core';
+import { Socket } from 'ng-socket-io';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx'; 
 
-@Component({
-  selector: 'app-tab-lastadded',
-  templateUrl: './tab-lastadded.page.html',
-  styleUrls: ['./tab-lastadded.page.scss'],
+@Injectable({
+  providedIn: 'root'
 })
-export class TabLastaddedPage implements OnInit {
+export class MySocket {
 
-  constructor(private socket: MySocket, public globalTracks: GlobalService, public localNotifications: LocalNotifications, translate : Translater) {
-    // subscribe to events of new tracks from server
- /*   this.getNewTrack().subscribe(message => {
+	localNotifications : LocalNotifications;
+  constructor(private socket: Socket, public globalTracks : GlobalService) {
+    this.globalTracks.removeAllTracks();
+    this.connectToServer();
+    this.getNewTrack().subscribe(message => {
       // add track to global variable
       globalTracks.addTrack(message);
-      this.localNotifications.schedule({
+    /*  this.localNotifications.schedule({
         id: 1,
         title: 'New song added',
         text: message['track'],
         actions: [
           { id: 'plus', title: 'up' },
-          { id: 'minus',  title: 'down' }
+          { id: 'minus',  title: 'down' } 
         ],
-        foreground : true 
-      });
+        foreground : true
+      });*/
     });
 
-    this.localNotifications.on('plus').subscribe(notification => { console.log(notification); this.upvote(notification['text']);});
-    this.localNotifications.on('minus').subscribe(notification => { console.log(notification); this.downvote(notification['text']);}); 
+    //this.localNotifications.on('plus').subscribe(notification => { console.log(notification); this.upvote(notification['text']);});
+    //this.localNotifications.on('minus').subscribe(notification => { console.log(notification); this.downvote(notification['text']);});
 
-    // subscribe to upvotes 
-    this.getVote().subscribe(message => { 
+    // subscribe to upvotes
+    this.getVote().subscribe(message => {
       globalTracks.updateVote(message);
     });
 
@@ -52,12 +48,11 @@ export class TabLastaddedPage implements OnInit {
     this.getDeletedSong().subscribe(message => {
       // look for track into array
       globalTracks.removeTrack(message);
-    });*/
+    });
+   }
 
-  }
-/*
-  // create an observer to listen to events "new-track" from socket
-  getDeletedSong() {
+   // create an observer to listen to events "new-track" from socket
+   getDeletedSong() {
     let observable = new Observable(observer => {
       this.socket.on('deleteSong', (data) => {
         observer.next(data);
@@ -94,18 +89,17 @@ export class TabLastaddedPage implements OnInit {
     })
     return observable;
   }
-*/
+
   upvote(track: string) {
-    this.socket.upvote(track);
-    //this.socket.emit('vote', { vote: "up", track: track });
+    this.socket.emit('vote', { vote: "up", track: track });
   }
 
   downvote(track: string) {
-    this.socket.downvote(track);
-    //this.socket.emit('vote', { vote: "down", track: track });
+    this.socket.emit('vote', { vote: "down", track: track });
   }
 
-  ngOnInit() {
+  connectToServer(){
+    console.log("I'm throwed !!!!");
+    this.socket.connect();  
   }
-
 }
