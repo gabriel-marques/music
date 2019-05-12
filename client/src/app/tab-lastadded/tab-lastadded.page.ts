@@ -1,9 +1,7 @@
 import { MySocket } from './../mySocket';
 import { Translater } from './../translater';
-//import { LocalNotifications } from '@ionic-native/local-notifications';
 import { GlobalService } from './../global.service';
 import { Component, OnInit } from '@angular/core';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 @Component({
   selector: 'app-tab-lastadded',
@@ -14,7 +12,6 @@ export class TabLastaddedPage implements OnInit {
 
   constructor(private socket: MySocket,
               public globalTracks: GlobalService,
-              public localNotifications: LocalNotifications,
               translate : Translater) {
 
   }

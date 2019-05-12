@@ -1,3 +1,4 @@
+import { Translater } from './translater';
 import { Observable } from 'rxjs/Observable';
 import { GlobalService } from './global.service';
 import { Injectable } from '@angular/core';
@@ -9,27 +10,26 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 })
 export class MySocket {
 
-	localNotifications : LocalNotifications;
-  constructor(private socket: Socket, public globalTracks : GlobalService) {
+	//localNotifications : LocalNotifications;
+  constructor(private socket: Socket,
+              public globalTracks : GlobalService,
+              private notif : LocalNotifications,
+              private translate : Translater) {
+
+    // set notifications handlers for actions
+    this.notif.on('plus').subscribe(notification => { console.log(notification); this.upvote(notification['text']);});
+    this.notif.on('minus').subscribe(notification => { console.log(notification); this.downvote(notification['text']);});
+
+    // reset list of songs
     this.globalTracks.removeAllTracks();
+    // connect to server
     this.connectToServer();
+
     this.getNewTrack().subscribe(message => {
       // add track to global variable
       globalTracks.addTrack(message);
-    /*  this.localNotifications.schedule({
-        id: 1,
-        title: 'New song added',
-        text: message['track'],
-        actions: [
-          { id: 'plus', title: 'up' },
-          { id: 'minus',  title: 'down' } 
-        ],
-        foreground : true
-      });*/
+      this.startNotif(message);
     });
-
-    //this.localNotifications.on('plus').subscribe(notification => { console.log(notification); this.upvote(notification['text']);});
-    //this.localNotifications.on('minus').subscribe(notification => { console.log(notification); this.downvote(notification['text']);});
 
     // subscribe to upvotes
     this.getVote().subscribe(message => {
@@ -105,5 +105,18 @@ sendNewMusic(track: string){
   connectToServer(){
     console.log("I'm throwed !!!!");
     this.socket.connect();  
+  }
+
+  startNotif(message : any) {
+    this.notif.schedule({
+      id: 1,
+      title: this.translate.translateText("NEWSONGADDED"),
+      text: message['track'],
+      actions: [
+        { id: 'plus', title: this.translate.translateText("UP")},
+        { id: 'minus', title: this.translate.translateText("DOWN") }
+      ],
+      foreground: true
+    });
   }
 }

@@ -3,11 +3,9 @@ import { Translater } from './translater';
 import { GlobalService } from './global.service';
 import { Component } from '@angular/core';
 
-import { Platform, MenuController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { Socket } from 'ng-socket-io';
-//import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -25,8 +23,7 @@ export class AppComponent {
     public globalTracks: GlobalService
   ) {
     this.initializeApp();
-    //translate.setDefaultLang('en');
-    //translate.use('de');
+    // definition of language
     translate.changeLanguage('ba');
   }
 
@@ -34,7 +31,6 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      //socket = new MySocket(this);
     });
   }
 }

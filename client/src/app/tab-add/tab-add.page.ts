@@ -1,6 +1,5 @@
 import { MySocket } from './../mySocket';
 import { Translater } from './../translater';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,7 +12,6 @@ export class TabAddPage implements OnInit {
   track = '';
 
   constructor(private socket: MySocket,
-              public localNotifications: LocalNotifications,
               translate : Translater) {
   }
 
@@ -22,8 +20,10 @@ export class TabAddPage implements OnInit {
 
   // send a track to server
   addTrack() {
-    this.socket.sendNewMusic(this.track);
-    //this.localNotifications.requestPermission();
-    this.track = '';
+    if (this.track != "") {
+      this.socket.sendNewMusic(this.track);
+      //this.localNotifications.requestPermission();
+      this.track = '';
+    }
   }
 }

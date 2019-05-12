@@ -1,4 +1,7 @@
 {
 	"HELLO" : "Hello",
-	"HOME"	: "Home"
+	"HOME"	: "Home",
+	"NEWSONGADDED" : "New song added",
+	"UP" : "up",
+	"down" : "down"
 }
