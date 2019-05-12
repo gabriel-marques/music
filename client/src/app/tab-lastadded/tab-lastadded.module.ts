@@ -1,4 +1,4 @@
-import { GlobalService } from './../global.service';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -20,9 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [TabLastaddedPage],
-  providers: [GlobalService]
+  declarations: [TabLastaddedPage]
 })
 export class TabLastaddedPageModule {}

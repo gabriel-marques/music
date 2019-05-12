@@ -1,4 +1,9 @@
 {
 	"HELLO" : "Hello",
-	"HOME"	: "Home"
+	"HOME"	: "Home",
+	"NEWSONGADDED" : "New song added",
+	"UP" : "up",
+	"down" : "down",
+	"EMPTYFIELD" : "Please, fill the field",
+	"ADDATRACK" : "Add a track"
 }

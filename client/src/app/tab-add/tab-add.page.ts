@@ -1,6 +1,7 @@
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { MySocket } from './../mySocket';
+import { Translater } from './../translater';
 import { Component, OnInit } from '@angular/core';
-import { Socket } from 'ng-socket-io';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab-add',
@@ -11,8 +12,9 @@ export class TabAddPage implements OnInit {
 
   track = '';
 
-  constructor(private socket: Socket, public localNotifications: LocalNotifications) {
-    this.socket.connect(); // connect to server one time 
+  constructor(private socket: MySocket,
+              private translate : Translater,
+              private toastController: ToastController) {
   }
 
   ngOnInit() {
@@ -20,8 +22,20 @@ export class TabAddPage implements OnInit {
 
   // send a track to server
   addTrack() {
-    this.socket.emit('add-track', { track: this.track, date: Date.now() });
-    this.localNotifications.requestPermission();
-    this.track = '';
+    if (this.track != "") {
+      this.socket.sendNewMusic(this.track);
+      //this.localNotifications.requestPermission();
+      this.track = '';
+    }else{
+      this.presentEmptyField();
+    }
+  }
+
+  async presentEmptyField() {
+    const toast = await this.toastController.create({
+      message: this.translate.translateText("EMPTYFIELD"),
+      duration: 2000
+    });
+    toast.present();
   }
 }
