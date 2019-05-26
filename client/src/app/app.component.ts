@@ -16,8 +16,6 @@ import { ToastController } from '@ionic/angular';
 })
 export class AppComponent {
 
-  socket : MySocket;
-
    constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -25,7 +23,8 @@ export class AppComponent {
     public translate: Translater,
     public globalTracks: GlobalService,
     public actionSheetController: ActionSheetController,
-    public toastController: ToastController
+    public toastController: ToastController,
+    public socket : MySocket,
   ) {
     this.initializeApp();
   }

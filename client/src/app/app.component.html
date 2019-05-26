@@ -22,7 +22,7 @@
       <ion-tab-button tab="tab-lastadded">
         <ion-icon name="list"></ion-icon>
         <ion-label>{{"TAB_LASTADDED" | translate}}</ion-label>
-        <ion-badge>6</ion-badge>
+        <ion-badge *ngIf="this.socket.notificationNumber > 0">{{ this.socket.notificationNumber }}</ion-badge>
       </ion-tab-button>
   
       <ion-tab-button tab="tab-add">

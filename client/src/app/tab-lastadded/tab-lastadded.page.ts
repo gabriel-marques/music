@@ -24,7 +24,8 @@ export class TabLastaddedPage implements OnInit {
     this.socket.downvote(track);
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
+    this.socket.notificationNumber = 0;
   }
 
 }

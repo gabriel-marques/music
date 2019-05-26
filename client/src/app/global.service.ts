@@ -22,6 +22,10 @@ export class GlobalService {
     this.tracks = [...this.tracks]; // force refresh of view
   }
 
+  getTrackName(track){
+    return track.track;
+  }
+
   removeTrack(track){
     // get index of track in global array
     var index = this.tracks.findIndex(t => t.track == track);

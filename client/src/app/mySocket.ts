@@ -13,6 +13,7 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 export class MySocket {
   //used to automatically upvote a song if the user add it
   private lastTrackAddedByMe: string;
+  public notificationNumber;
   //localNotifications : LocalNotifications;
   constructor(private socket: Socket,
     public globalTracks: GlobalService,
@@ -29,12 +30,18 @@ export class MySocket {
     // connect to server
     this.connectToServer();
 
+    this.notificationNumber = 0;
+    this.lastTrackAddedByMe = '';
+
     this.getNewTrack().subscribe(message => {
       // add track to global variable
       globalTracks.addTrack(message);
-      if (this.lastTrackAddedByMe == message.track){
-        this.upvote(message.track)
+      if (this.lastTrackAddedByMe == this.globalTracks.getTrackName(message)){
+        this.upvote(this.globalTracks.getTrackName(message))
         this.lastTrackAddedByMe = '';
+        this.notificationNumber += 1; //////////////////////////////////////////////////////////////DEBUG ONLY
+      } else {
+        this.notificationNumber += 1;
       }
       this.startNotif(message);
     });
@@ -140,7 +147,6 @@ export class MySocket {
   }
 
   sendNewMusic(track: string, artist: string) {
-    console.log({ track: track, date: Date.now() });
     this.lastTrackAddedByMe = track;
     this.socket.emit('add-track', { track: track, date: Date.now(), artist: artist });
   }
