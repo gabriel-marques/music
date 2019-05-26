@@ -1,18 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab_nexttracks</ion-title>
+    <ion-title>{{"TAB_NEXTTRACKS" | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-item *ngFor="let track of orderByVotes()">
-    <ion-label>{{track['track']}}</ion-label>
-    <ion-label>{{track['votes']}}</ion-label>
-    <ion-button fill="clear" size="large" slot="end" (click)="upvote(track['track'])">
-      <ion-icon name="add"></ion-icon>
-    </ion-button>
-    <ion-button fill="clear" size="large" slot="end" (click)="downvote(track['track'])">
-      <ion-icon name="remove"></ion-icon>
-    </ion-button>
-  </ion-item> 
+  <ion-card *ngFor="let track of orderByVotes()">
+    <ion-card-header class="cardHeader"> 
+      <ion-card-subtitle>{{ track.artist }}</ion-card-subtitle>
+      <ion-card-title>{{ track.track }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="cardContent">
+        <ion-grid>
+            <ion-row>
+              <ion-col size="5">
+                  <ion-button [color]="track.myvote==-1 ? 'danger' : 'default'" expand=block shape="round" [fill]="track.myvote==-1 ? 'solid' : 'outline'" size=large (click)="downvote(track['track'])">
+                    <ion-ripple-effect></ion-ripple-effect>  
+                    <ion-icon name="remove"></ion-icon>
+                  </ion-button>
+              </ion-col>
+              <ion-col size="2" class="songVote">
+                <div>
+                    {{ track.votes }}
+                </div>
+              </ion-col>
+              <ion-col size="5">
+                  <ion-button [color]="track.myvote==1 ? 'success' : 'default'" expand=block shape="round" [fill]="track.myvote==1 ? 'solid' : 'outline'"  size=large (click)="upvote(track['track'])">
+                      <ion-ripple-effect></ion-ripple-effect>
+                      <ion-icon name="add"></ion-icon>
+                    </ion-button>
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

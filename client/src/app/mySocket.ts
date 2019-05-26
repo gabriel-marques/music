@@ -3,22 +3,26 @@ import { Observable } from 'rxjs/Observable';
 import { GlobalService } from './global.service';
 import { Injectable } from '@angular/core';
 import { Socket } from 'ng-socket-io';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx'; 
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { ToastController } from '@ionic/angular';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MySocket {
-
-	//localNotifications : LocalNotifications;
+  //used to automatically upvote a song if the user add it
+  private lastTrackAddedByMe: string;
+  //localNotifications : LocalNotifications;
   constructor(private socket: Socket,
-              public globalTracks : GlobalService,
-              private notif : LocalNotifications,
-              private translate : Translater) {
+    public globalTracks: GlobalService,
+    private notif: LocalNotifications,
+    private translate: Translater,
+    public toastController: ToastController) {
 
     // set notifications handlers for actions
-    this.notif.on('plus').subscribe(notification => { console.log(notification); this.upvote(notification['text']);});
-    this.notif.on('minus').subscribe(notification => { console.log(notification); this.downvote(notification['text']);});
+    this.notif.on('plus').subscribe(notification => { console.log(notification); this.upvote(notification['text']); });
+    this.notif.on('minus').subscribe(notification => { console.log(notification); this.downvote(notification['text']); });
 
     // reset list of songs
     this.globalTracks.removeAllTracks();
@@ -28,6 +32,10 @@ export class MySocket {
     this.getNewTrack().subscribe(message => {
       // add track to global variable
       globalTracks.addTrack(message);
+      if (this.lastTrackAddedByMe == message.track){
+        this.upvote(message.track)
+        this.lastTrackAddedByMe = '';
+      }
       this.startNotif(message);
     });
 
@@ -48,11 +56,20 @@ export class MySocket {
     this.getDeletedSong().subscribe(message => {
       // look for track into array
       globalTracks.removeTrack(message);
+      this.presentToast(message + this.translate.translateText("HASBEENREMOVED"))
     });
-   }
+  }
 
-   // create an observer to listen to events "new-track" from socket
-   getDeletedSong() {
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  // create an observer to listen to events "new-track" from socket
+  getDeletedSong() {
     let observable = new Observable(observer => {
       this.socket.on('deleteSong', (data) => {
         observer.next(data);
@@ -91,29 +108,54 @@ export class MySocket {
   }
 
   upvote(track: string) {
-    this.socket.emit('vote', { vote: "up", track: track });
+    var index = this.globalTracks.tracks.findIndex(t => t.track == track);
+    switch (this.globalTracks.tracks[index].myvote) {
+      case -1:
+        this.socket.emit('vote', { vote: "up", track: track });
+      //intentionnal falltrough
+      case 0:
+        this.globalTracks.tracks[index].myvote = 1;
+        this.socket.emit('vote', { vote: "up", track: track });
+        break;
+      case 1:
+        this.socket.emit('vote', { vote: "down", track: track });
+        this.globalTracks.tracks[index].myvote = 0;
+    }
   }
 
   downvote(track: string) {
-    this.socket.emit('vote', { vote: "down", track: track });
+    var index = this.globalTracks.tracks.findIndex(t => t.track == track);
+    switch (this.globalTracks.tracks[index].myvote) {
+      case 1:
+        this.socket.emit('vote', { vote: "down", track: track });
+      //intentionnal falltrough
+      case 0:
+        this.globalTracks.tracks[index].myvote = -1;
+        this.socket.emit('vote', { vote: "down", track: track });
+        break;
+      case -1:
+        this.socket.emit('vote', { vote: "up", track: track });
+        this.globalTracks.tracks[index].myvote = 0;
+    }
   }
 
-sendNewMusic(track: string){
-    this.socket.emit('add-track', { track: track, date: Date.now() });
+  sendNewMusic(track: string, artist: string) {
+    console.log({ track: track, date: Date.now() });
+    this.lastTrackAddedByMe = track;
+    this.socket.emit('add-track', { track: track, date: Date.now(), artist: artist });
   }
 
-  connectToServer(){
-    console.log("I'm throwed !!!!");
-    this.socket.connect();  
+  connectToServer() {
+    this.socket.connect();
   }
 
-  startNotif(message : any) {
+  startNotif(message: any) {
     this.notif.schedule({
       id: 1,
       title: this.translate.translateText("NEWSONGADDED"),
       text: message['track'],
       actions: [
-        { id: 'plus', title: this.translate.translateText("UP")},
+        { id: 'plus', title: this.translate.translateText("UP") },
         { id: 'minus', title: this.translate.translateText("DOWN") }
       ],
       foreground: true

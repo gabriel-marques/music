@@ -9,15 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./serv-con.page.scss'],
 })
 export class ServConPage implements OnInit {
-  translate : Translater
-  constructor(public loadingController: LoadingController, translate : Translater, private router: Router) {
+  constructor(public loadingController: LoadingController, private translate : Translater, private router: Router) {
     this.presentLoading()
   }
 
   async presentLoading() {
     const loading = await this.loadingController.create({
       spinner: "crescent",
-      message: 'Looking up for your friends, please wait for a second...',//this.translate.translateText("HELLO"),//
+      message: this.translate.translateText("HELLO"),//'Looking up for your friends, please wait for a second...',
       duration: 6000
     });
     await loading.present();

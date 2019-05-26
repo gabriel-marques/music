@@ -2,6 +2,8 @@ import { MySocket } from './../mySocket';
 import { Translater } from './../translater';
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { finished } from 'stream';
+import { bypassSanitizationTrustStyle } from '@angular/core/src/sanitization/bypass';
 
 @Component({
   selector: 'app-tab-add',
@@ -11,6 +13,7 @@ import { ToastController } from '@ionic/angular';
 export class TabAddPage implements OnInit {
 
   track = '';
+  artist = '';
 
   constructor(private socket: MySocket,
               private translate : Translater,
@@ -23,9 +26,10 @@ export class TabAddPage implements OnInit {
   // send a track to server
   addTrack() {
     if (this.track != "") {
-      this.socket.sendNewMusic(this.track);
+      this.socket.sendNewMusic(this.track, this.artist);
       //this.localNotifications.requestPermission();
       this.track = '';
+      this.artist = '';
     }else{
       this.presentEmptyField();
     }
@@ -38,4 +42,4 @@ export class TabAddPage implements OnInit {
     });
     toast.present();
   }
-}
+}  
