@@ -10,7 +10,7 @@ import { bypassSanitizationTrustStyle } from '@angular/core/src/sanitization/byp
   templateUrl: './tab-add.page.html',
   styleUrls: ['./tab-add.page.scss'],
 })
-export class TabAddPage implements OnInit {
+export class TabAddPage {
 
   track = '';
   artist = '';
@@ -18,9 +18,6 @@ export class TabAddPage implements OnInit {
   constructor(private socket: MySocket,
               private translate : Translater,
               private toastController: ToastController) {
-  }
-
-  ngOnInit() {
   }
 
   // send a track to server

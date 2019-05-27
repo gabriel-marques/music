@@ -8,7 +8,7 @@ import { Translater } from '../translater';
   templateUrl: './tab-nexttracks.page.html',
   styleUrls: ['./tab-nexttracks.page.scss'],
 })
-export class TabNexttracksPage implements OnInit {
+export class TabNexttracksPage {
 
   constructor(private socket: MySocket,
     public globalTracks: GlobalService,
@@ -26,9 +26,6 @@ export class TabNexttracksPage implements OnInit {
 
   orderByVotes() {
     return this.globalTracks.tracks.sort((n1,n2) => n2['votes'] - n1['votes']);
-  }
-
-  ngOnInit() {
   }
 
   /*getMinusButtonColor(track[]: string){

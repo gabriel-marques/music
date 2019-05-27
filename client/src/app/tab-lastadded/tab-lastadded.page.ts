@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './tab-lastadded.page.html',
   styleUrls: ['./tab-lastadded.page.scss'],
 })
-export class TabLastaddedPage implements OnInit {
+export class TabLastaddedPage {
 
   constructor(private socket: MySocket,
               public globalTracks: GlobalService,
