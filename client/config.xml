@@ -3,7 +3,7 @@
     <name>PREZMUZIKA</name>
     <description>This is PREZMUZIKA</description>
     <author email="ikare@prezmuzika" href="http://ionicframework.com/">Ikare Team</author>
-    <content original-src="http://192.168.1.104:8100" src="http://192.168.1.104:8100" />
+    <content src="http://192.168.1.104:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

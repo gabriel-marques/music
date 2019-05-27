@@ -34,7 +34,7 @@ export class TabAddPage implements OnInit {
   async presentEmptyField() {
     const toast = await this.toastController.create({
       message: this.translate.translateText("EMPTYFIELD"),
-      duration: 2000
+      duration: 1500
     });
     toast.present();
   }
