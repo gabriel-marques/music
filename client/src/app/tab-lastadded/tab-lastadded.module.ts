@@ -25,4 +25,4 @@ const routes: Routes = [
   ],
   declarations: [TabLastaddedPage]
 })
-export class TabLastaddedPageModule {}
+export class TabLastaddedPageModule { }
