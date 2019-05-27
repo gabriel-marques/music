@@ -13,9 +13,7 @@ export class Translater {
 	 * @param translate Instance of TranslateService
 	 */
 	constructor(private translate: TranslateService) {
-		this.changeLanguage('fr');
-		this.changeLanguage('ba');
-		this.changeLanguage('en');
+		this.translate.addLangs(['fr','ba', 'en', 'pt', 'de']);
 		this.translate.setDefaultLang('en');
 	}
 	/**

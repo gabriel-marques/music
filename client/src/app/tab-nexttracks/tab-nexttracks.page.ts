@@ -1,3 +1,4 @@
+import { AppComponent } from './../app.component';
 import { MySocket } from './../mySocket';
 import { GlobalService } from './../global.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,9 +11,9 @@ import { Translater } from '../translater';
 })
 export class TabNexttracksPage {
 
-  constructor(private socket: MySocket,
+  constructor(public socket: MySocket,
     public globalTracks: GlobalService,
-    translate: Translater) { 
+    public translate: Translater) {
 
   }
 
@@ -25,7 +26,7 @@ export class TabNexttracksPage {
   }
 
   orderByVotes() {
-    return this.globalTracks.tracks.sort((n1,n2) => n2['votes'] - n1['votes']);
+    return this.globalTracks.tracks.sort((n1, n2) => n2['votes'] - n1['votes']);
   }
 
   /*getMinusButtonColor(track[]: string){

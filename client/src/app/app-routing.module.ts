@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tab-nexttracks', pathMatch: 'full' },
+  { path: '', redirectTo: 'tab-lastadded', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'serv-con', loadChildren: './serv-con/serv-con.module#ServConPageModule' },
   { path: 'tab-nexttracks', loadChildren: './tab-nexttracks/tab-nexttracks.module#TabNexttracksPageModule' },

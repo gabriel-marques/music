@@ -1,17 +1,4 @@
 <ion-app>
-  <ion-fab vertical="top" horizontal="end" slot="fixed">
-    <ion-fab-button>
-      <ion-icon name="flag"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="bottom">
-      <ion-fab-button *ngFor="let lang of translate.getAllLanguages()" (click)="translate.changeLanguage(lang)">{{ lang }}</ion-fab-button>
-    </ion-fab-list>
-  </ion-fab>
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button color="black" (click)="presentActionSheet()">
-      <ion-icon name="settings"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="tab-nexttracks">

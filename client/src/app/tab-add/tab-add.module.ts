@@ -25,4 +25,4 @@ const routes: Routes = [
   ],
   declarations: [TabAddPage]
 })
-export class TabAddPageModule {}
+export class TabAddPageModule { }

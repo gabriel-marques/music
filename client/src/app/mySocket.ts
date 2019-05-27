@@ -4,8 +4,7 @@ import { GlobalService } from './global.service';
 import { Injectable } from '@angular/core';
 import { Socket } from 'ng-socket-io';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
-import { ToastController } from '@ionic/angular';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { ToastController, ActionSheetController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +18,8 @@ export class MySocket {
     public globalTracks: GlobalService,
     private notif: LocalNotifications,
     private translate: Translater,
-    public toastController: ToastController) {
+    public toastController: ToastController,
+    public actionSheetController: ActionSheetController, ) {
 
     // set notifications handlers for actions
     this.notif.on('plus').subscribe(notification => { console.log(notification); this.upvote(notification['text']); });
@@ -36,14 +36,13 @@ export class MySocket {
     this.getNewTrack().subscribe(message => {
       // add track to global variable
       globalTracks.addTrack(message);
-      if (this.lastTrackAddedByMe == this.globalTracks.getTrackName(message)){
+      if (this.lastTrackAddedByMe == this.globalTracks.getTrackName(message)) {
         this.upvote(this.globalTracks.getTrackName(message))
         this.lastTrackAddedByMe = '';
-        this.notificationNumber += 1; //////////////////////////////////////////////////////////////DEBUG ONLY
       } else {
         this.notificationNumber += 1;
+        this.startNotif(message);
       }
-      this.startNotif(message);
     });
 
     // subscribe to upvotes
@@ -166,5 +165,52 @@ export class MySocket {
       ],
       foreground: true
     });
+  }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: this.translate.translateText("SETTINGS") + "Lucas",
+      animated: true,
+      backdropDismiss: true,
+      mode: "ios",
+      buttons: [{
+        text: 'Dummy server 1',
+        icon: 'musical-note',
+        handler: () => {
+          this.presentToast(this.translate.translateText("NOTIMPLEMENTEDYET"));
+        }
+      }, {
+        text: 'Dummy server 2',
+        icon: 'musical-note',
+        handler: () => {
+          this.presentToast(this.translate.translateText("NOTIMPLEMENTEDYET"));
+        }
+      }, {
+        text: this.translate.translateText("DISCONNECT"),
+        role: 'destructive',
+        icon: 'rocket',
+        handler: () => {
+          this.presentToast(this.translate.translateText("NOTIMPLEMENTEDYET"));
+        }
+      }, {
+        text: this.translate.translateText("SHAREAPP"),
+        icon: 'share',
+        handler: () => {
+          this.presentToast(this.translate.translateText("NOTIMPLEMENTEDYET"));
+        }
+      }, {
+        text: this.translate.translateText("QUITAPP"),
+        role: 'destructive',
+        icon: 'close-circle-outline',
+        handler: () => {
+          this.presentToast(this.translate.translateText("NOTIMPLEMENTEDYET"));
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel'
+      }]
+    });
+    await actionSheet.present();
   }
 }

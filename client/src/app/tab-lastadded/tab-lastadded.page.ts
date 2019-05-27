@@ -10,10 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabLastaddedPage {
 
-  constructor(private socket: MySocket,
-              public globalTracks: GlobalService,
-              translate : Translater)
-              {
+  constructor(public socket: MySocket,
+    public globalTracks: GlobalService,
+    public translate: Translater) {
   }
 
   upvote(track: string) {

@@ -4,34 +4,50 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> 
+<ion-content>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="flag"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button *ngFor="let lang of translate.getAllLanguages()" (click)="translate.changeLanguage(lang)">
+        {{ lang }}</ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button color="black" (click)="this.socket.presentActionSheet()">
+      <ion-icon name="settings"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ion-card *ngFor="let track of this.globalTracks.tracks">
-    <ion-card-header class="cardHeader"> 
-        <ion-card-subtitle>{{ track.artist }}</ion-card-subtitle>
-        <ion-card-title>{{ track.track }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content class="cardContent">
-          <ion-grid>
-              <ion-row>
-                <ion-col size="5">
-                  <ion-button [color]="track.myvote==-1 ? 'danger' : 'default'" expand=block shape="round" [fill]="track.myvote==-1 ? 'solid' : 'outline'" size=large (click)="downvote(track['track'])">
-                    <ion-ripple-effect></ion-ripple-effect>  
-                    <ion-icon name="remove"></ion-icon>
-                  </ion-button>
-                </ion-col>
-                <ion-col size="2" class="songVote">
-                  <div>
-                      {{ track.votes }}
-                  </div>
-                </ion-col>
-                <ion-col size="5">
-                  <ion-button [color]="track.myvote==1 ? 'success' : 'default'" expand=block shape="round" [fill]="track.myvote==1 ? 'solid' : 'outline'"  size=large (click)="upvote(track['track'])">
-                    <ion-ripple-effect></ion-ripple-effect>
-                    <ion-icon name="add"></ion-icon>
-                  </ion-button>
-                </ion-col>
-              </ion-row>
-          </ion-grid>
-      </ion-card-content>
-    </ion-card>
+    <ion-card-header class="cardHeader">
+      <ion-card-subtitle>{{ track.artist }}</ion-card-subtitle>
+      <ion-card-title>{{ track.track }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="cardContent">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="5">
+            <ion-button [color]="track.myvote==-1 ? 'danger' : 'default'" expand=block shape="round"
+              [fill]="track.myvote==-1 ? 'solid' : 'outline'" size=large (click)="downvote(track['track'])">
+              <ion-ripple-effect></ion-ripple-effect>
+              <ion-icon name="remove"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="2" class="songVote">
+            <div>
+              {{ track.votes }}
+            </div>
+          </ion-col>
+          <ion-col size="5">
+            <ion-button [color]="track.myvote==1 ? 'success' : 'default'" expand=block shape="round"
+              [fill]="track.myvote==1 ? 'solid' : 'outline'" size=large (click)="upvote(track['track'])">
+              <ion-ripple-effect></ion-ripple-effect>
+              <ion-icon name="add"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

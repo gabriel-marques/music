@@ -25,4 +25,4 @@ const routes: Routes = [
   ],
   declarations: [TabNexttracksPage]
 })
-export class TabNexttracksPageModule {}
+export class TabNexttracksPageModule { }

@@ -3,7 +3,7 @@
     <name>PREZMUZIKA</name>
     <description>This is PREZMUZIKA</description>
     <author email="ikare@prezmuzika" href="http://ionicframework.com/">Ikare Team</author>
-    <content original-src="http://192.168.1.104:8100" src="http://192.168.42.28:8100" />
+    <content src="http://192.168.1.104:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -85,7 +85,6 @@
     <plugin name="cordova-plugin-local-notification" spec="0.9.0-beta.2" />
     <plugin name="cordova-plugin-networkinterface" spec="2.0.0" />
     <allow-navigation href="http://192.168.1.104:8100" sessionid="0f5e4c33" />
-    <allow-navigation href="http://192.168.42.28:8100" sessionid="9fea2dc1" />
     <engine name="ios" spec="5.0.1" />
     <engine name="android" spec="8.0.0" />
 </widget>

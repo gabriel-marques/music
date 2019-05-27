@@ -15,9 +15,9 @@ export class TabAddPage {
   track = '';
   artist = '';
 
-  constructor(private socket: MySocket,
-              private translate : Translater,
-              private toastController: ToastController) {
+  constructor(public socket: MySocket,
+    public translate: Translater,
+    private toastController: ToastController) {
   }
 
   // send a track to server
@@ -27,7 +27,7 @@ export class TabAddPage {
       //this.localNotifications.requestPermission();
       this.track = '';
       this.artist = '';
-    }else{
+    } else {
       this.presentEmptyField();
     }
   }
