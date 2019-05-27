@@ -7,8 +7,10 @@ export class GlobalService {
 
   /* array of {
   track : "string",
+  artist : "string",
   date : number,
-  votes : number  
+  votes : number,
+  myvote : number  
   }*/
   tracks = [];
 
@@ -16,7 +18,12 @@ export class GlobalService {
 
   addTrack(track){
     this.tracks.unshift(track);
+    this.tracks[0].myvote = 0;
     this.tracks = [...this.tracks]; // force refresh of view
+  }
+
+  getTrackName(track){
+    return track.track;
   }
 
   removeTrack(track){
@@ -24,6 +31,7 @@ export class GlobalService {
     var index = this.tracks.findIndex(t => t.track == track);
     this.tracks.splice(index,1); // delete the track
     this.tracks = [...this.tracks]; // force refresh of view
+    
   }
   
   removeAllTracks(){

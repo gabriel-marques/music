@@ -1,20 +1,33 @@
 <ion-app>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="flag"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button *ngFor="let lang of translate.getAllLanguages()" (click)="translate.changeLanguage(lang)">{{ lang }}</ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button color="black" (click)="presentActionSheet()">
+      <ion-icon name="settings"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="tab-nexttracks">
         <ion-icon name="heart"></ion-icon>
-        <ion-label>{{"tab_nexttracks" | translate}}</ion-label>
+        <ion-label>{{"TAB_NEXTTRACKS" | translate}}</ion-label>
       </ion-tab-button>
   
       <ion-tab-button tab="tab-lastadded">
         <ion-icon name="list"></ion-icon>
-        <ion-label>{{"tab_lastadded" | translate}}</ion-label>
-        <ion-badge>6</ion-badge>
+        <ion-label>{{"TAB_LASTADDED" | translate}}</ion-label>
+        <ion-badge *ngIf="this.socket.notificationNumber > 0">{{ this.socket.notificationNumber }}</ion-badge>
       </ion-tab-button>
   
       <ion-tab-button tab="tab-add">
         <ion-icon name="add"></ion-icon>
-        <ion-label>{{"tab_add" | translate}}</ion-label>
+        <ion-label>{{"TAB_ADD" | translate}}</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>

@@ -13,8 +13,10 @@ export class Translater {
 	 * @param translate Instance of TranslateService
 	 */
 	constructor(private translate: TranslateService) {
-		this.translate.setDefaultLang('en');
 		this.changeLanguage('fr');
+		this.changeLanguage('ba');
+		this.changeLanguage('en');
+		this.translate.setDefaultLang('en');
 	}
 	/**
 	 * Change the language used by the app

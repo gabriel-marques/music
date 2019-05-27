@@ -31,4 +31,11 @@ export class TabNexttracksPage implements OnInit {
   ngOnInit() {
   }
 
+  /*getMinusButtonColor(track[]: string){
+    if (track.myvote ){
+      return 
+    }
+      ? 'default' : 'danger'
+  }*/
+
 }

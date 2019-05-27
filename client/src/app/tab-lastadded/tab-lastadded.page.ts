@@ -12,8 +12,8 @@ export class TabLastaddedPage implements OnInit {
 
   constructor(private socket: MySocket,
               public globalTracks: GlobalService,
-              translate : Translater) {
-
+              translate : Translater)
+              {
   }
 
   upvote(track: string) {
@@ -24,7 +24,8 @@ export class TabLastaddedPage implements OnInit {
     this.socket.downvote(track);
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
+    this.socket.notificationNumber = 0;
   }
 
 }

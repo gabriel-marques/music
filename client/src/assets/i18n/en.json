@@ -5,5 +5,15 @@
 	"UP" : "up",
 	"down" : "down",
 	"EMPTYFIELD" : "Please, fill the field",
-	"ADDATRACK" : "Add a track"
+	"ADDATRACK" : "Add a track",
+
+	"SETTINGS"	: "Connected to : ",
+	"DISCONNECT": "Disconnect",
+	"SHAREAPP"	: "Share this app !",
+	"QUITAPP"	: "Quit the app ?",
+	"NOTIMPLEMENTEDYET"	: "Sorry, functionality not implemented yet, check again later.",
+	"TAB_NEXTTRACKS"	: "Next tracks",
+	"TAB_LASTADDED"	: "Last added",
+	"TAB_ADD"	: "Add",
+    "HASBEENREMOVED"    : "Has been removed, too many downvotes"
 }

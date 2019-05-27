@@ -1,14 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab_add</ion-title>
+    <ion-title>{{"TAB_ADD" | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <ion-item>
+<ion-content>    
+      <ion-item>
         <ion-label stacked>{{"ADDATRACK" | translate}}</ion-label>
         <!-- [(ngmodel)] is the glue between the view and the variable in tab-add.page.ts-->
         <ion-input type="text" [(ngModel)]="track" placeholder="Track"></ion-input>
+        <ion-input type="text" [(ngModel)]="artist" placeholder="Artist"></ion-input>
       </ion-item>
       <button ion-button (click)="addTrack()">Add</button>
       <ion-card>
