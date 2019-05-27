@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './serv-con.page.html',
   styleUrls: ['./serv-con.page.scss'],
 })
-export class ServConPage implements OnInit {
+export class ServConPage {
   constructor(public loadingController: LoadingController, private translate : Translater, private router: Router) {
     this.presentLoading()
   }
@@ -38,8 +38,4 @@ export class ServConPage implements OnInit {
     this.router.navigateByUrl('/tab-nexttracks')
     return await loading.present();
   }
-
-  ngOnInit() {
-  }
-
 }

@@ -1,3 +1,19 @@
 {
-	"HELLO" : "Zdravo"
+	"HELLO" : "Zdravo",
+	"HOME"	: "Dom",
+	"NEWSONGADDED" : "Dodana je nova pjesma",
+	"UP" : "gore",
+	"down" : "down",
+	"EMPTYFIELD" : "Molim vas, popunite polje",
+	"ADDATRACK" : "Dodajte numeru",
+
+	"SETTINGS"	: "Spojen na :",
+	"DISCONNECT": "Disconnect",
+	"SHAREAPP"	: "Podelite ovu aplikaciju!",
+	"QUITAPP"	: "Napustite aplikaciju?",
+	"NOTIMPLEMENTEDYET"	: "Nažalost, funkcionalnost još nije implementirana.",
+	"TAB_NEXTTRACKS"	: "Next tracks",
+	"TAB_LASTADDED"	: "Last added",
+	"TAB_ADD"	: "dodati",
+    "HASBEENREMOVED"    : "Uklonjeno je, previše downvota"
 }

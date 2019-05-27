@@ -1,3 +1,19 @@
 {
-	"HELLO" : "Hallo"
+	"HELLO" : "Hallo",
+	"HOME"	: "Zuhause",
+	"NEWSONGADDED" : "Neues Lied hinzugefügt",
+	"UP" : "oben",
+	"down" : "Nieder",
+	"EMPTYFIELD" : "Bitte füllen Sie das Feld aus",
+	"ADDATRACK" : "Fügen Sie ein Stück hinzu",
+
+	"SETTINGS"	: "Verbunden : ",
+	"DISCONNECT": "Trennen",
+	"SHAREAPP"	: "Share this app !",
+	"QUITAPP"	: "Teile diese App !",
+	"NOTIMPLEMENTEDYET"	: "Leider ist die Funktionalität noch nicht implementiert.",
+	"TAB_NEXTTRACKS"	: "Nächste Tracks",
+	"TAB_LASTADDED"	: "Zuletzt hinzugefügt",
+	"TAB_ADD"	: "Hinzufügen",
+    "HASBEENREMOVED"    : "Wurden zu viele Abstimmungen entfernt"
 }

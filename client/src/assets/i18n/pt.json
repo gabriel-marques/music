@@ -1,3 +1,19 @@
 {
-	"HELLO" : "Olà"
+	"HELLO" : "Olà",
+	"HOME"	: "casa",
+	"NEWSONGADDED" : "música adicionada",
+	"UP" : "mais",
+	"down" : "menos",
+	"EMPTYFIELD" : "Preencha os campos ",
+	"ADDATRACK" : "Adicionar música",
+
+	"SETTINGS"	: "Conectado a : ",
+	"DISCONNECT": "Desconectar",
+	"SHAREAPP"	: "Partagear app !",
+	"QUITAPP"	: "Sair ?",
+	"NOTIMPLEMENTEDYET"	: "Função não implementada",
+	"TAB_NEXTTRACKS"	: "Próximos",
+	"TAB_LASTADDED"	: "Ultimos",
+	"TAB_ADD"	: "Adicionar",
+    "HASBEENREMOVED"    : "Música suprimida"
 }
