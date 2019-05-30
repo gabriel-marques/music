@@ -6,6 +6,8 @@ import { Socket } from 'ng-socket-io';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { ToastController, ActionSheetController } from '@ionic/angular';
 
+//tood: add song page, welcome message
+
 @Injectable({
   providedIn: 'root'
 })
@@ -62,7 +64,7 @@ export class MySocket {
     this.getDeletedSong().subscribe(message => {
       // look for track into array
       globalTracks.removeTrack(message);
-      this.presentToast(message + this.translate.translateText("HASBEENREMOVED"))
+      this.presentToast(message + ' ' + this.translate.translateText("HASBEENREMOVED"))
     });
   }
 

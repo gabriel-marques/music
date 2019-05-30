@@ -1,19 +1,19 @@
 {
 	"HELLO" : "Bonjour",
-	"HOME"	: "Accueil",
-	"NEWSONGADDED" : "Chanson ajoutée",
-	"UP" : "plus",
-	"down" : "moins",
-	"EMPTYFIELD" : "Veuillez renseigner les champs",
-	"ADDATRACK" : "Ajouter un morceau",
+	"HOME"	: "Page d'accueil",
+	"NEWSONGADDED" : "Nouvelle chanson ajoutée",
+	"UP" : "monter",
+	"down" : "descendre",
+	"EMPTYFIELD" : "Veuillez remplir le champ 'Ajouter morceau'",
+	"ADDATRACK" : "Ajouter morceau",
 
 	"SETTINGS"	: "Connecté à : ",
 	"DISCONNECT": "Déconnecter",
 	"SHAREAPP"	: "Partager cette app !",
 	"QUITAPP"	: "Quitter l'app ?",
-	"NOTIMPLEMENTEDYET"	: "Désolé, cette fonctionnalité n'est pas encore disponible.",
-	"TAB_NEXTTRACKS"	: "Les prochains",
+	"NOTIMPLEMENTEDYET"	: "Cette fonctionnalité n'a pas encore été ajoutée, veuillez revenir ultérieurement",
+	"TAB_NEXTTRACKS"	: "Morceaux suivants",
 	"TAB_LASTADDED"	: "Derniers ajouts",
 	"TAB_ADD"	: "Ajouter",
-    "HASBEENREMOVED"    : "Morceau supprimé"
+    "HASBEENREMOVED"    : "a été supprimé, trop de votes négatifs."
 }

@@ -4,7 +4,7 @@
 	"NEWSONGADDED" : "New song added",
 	"UP" : "up",
 	"down" : "down",
-	"EMPTYFIELD" : "Please, fill the field",
+	"EMPTYFIELD" : "Please, fill the field 'Add a track'",
 	"ADDATRACK" : "Add a track",
 
 	"SETTINGS"	: "Connected to : ",
@@ -15,5 +15,5 @@
 	"TAB_NEXTTRACKS"	: "Next tracks",
 	"TAB_LASTADDED"	: "Last added",
 	"TAB_ADD"	: "Add",
-    "HASBEENREMOVED"    : "Has been removed, too many downvotes"
+    "HASBEENREMOVED"    : "has been removed, too many downvotes"
 }
