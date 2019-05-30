@@ -2,24 +2,25 @@
   <ion-toolbar>
     <ion-title>{{"TAB_LASTADDED" | translate}}</ion-title>
   </ion-toolbar>
+  <ion-fab vertical="bottom" edge horizontal="end" slot="fixed">
+    <ion-fab-button color="dark" (click)="this.socket.presentActionSheet()">
+      <ion-icon name="more"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-header>
 
 <ion-content>
-  <ion-fab vertical="top" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button>
       <ion-icon name="flag"></ion-icon>
     </ion-fab-button>
-    <ion-fab-list side="bottom">
+    <ion-fab-list side="top">
       <ion-fab-button *ngFor="let lang of translate.getAllLanguages()" (click)="translate.changeLanguage(lang)">
         {{ lang }}</ion-fab-button>
     </ion-fab-list>
   </ion-fab>
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button color="black" (click)="this.socket.presentActionSheet()">
-      <ion-icon name="settings"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-card *ngFor="let track of this.globalTracks.tracks">
+  
+  <ion-card *ngFor="let track of this.globalTracks.tracks" class="sc-ion-card-ios-h sc-ion-card-ios-s ios hydrated">
     <ion-card-header class="cardHeader">
       <ion-card-subtitle>{{ track.artist }}</ion-card-subtitle>
       <ion-card-title>{{ track.track }}</ion-card-title>

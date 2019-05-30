@@ -12,8 +12,13 @@
 	"SHAREAPP"	: "Share this app !",
 	"QUITAPP"	: "Quit the app ?",
 	"NOTIMPLEMENTEDYET"	: "Sorry, functionality not implemented yet, check again later.",
-	"TAB_NEXTTRACKS"	: "Next tracks",
+	"TAB_NEXTTRACKS"	: "tracks list",
 	"TAB_LASTADDED"	: "Last added",
 	"TAB_ADD"	: "Add",
-    "HASBEENREMOVED"    : "has been removed, too many downvotes"
+	"HASBEENREMOVED"    : "has been removed, too many downvotes",
+	"STARTSERVER"	: "Start your own server !",
+	"LETSROCKTHESHOW"	: "Let's rock the show! Add a bit of yourself in the selection",
+	"LOOKINGFORSERVER"	: "Looking up for your friends, hang on for a sec...",
+	"WELCOMEBACK"	: "Welcome back !",
+	"CURRENTLYPLAYING"	: "Currently playing :"
 }

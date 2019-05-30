@@ -9,15 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./serv-con.page.scss'],
 })
 export class ServConPage {
-  constructor(public loadingController: LoadingController, private translate : Translater, private router: Router) {
+  constructor(public loadingController: LoadingController, public translate : Translater, private router: Router) {
     this.presentLoading()
   }
 
   async presentLoading() {
     const loading = await this.loadingController.create({
       spinner: "crescent",
-      message: this.translate.translateText("HELLO"),//'Looking up for your friends, please wait for a second...',
-      duration: 6000
+      message: this.translate.translateText("LOOKINGFORSERVER"),
+      duration: 3000
     });
     await loading.present();
 
@@ -31,7 +31,7 @@ export class ServConPage {
     const loading = await this.loadingController.create({
       spinner: null,
       duration: 2000,
-      message: 'Connecting to xx\'s servers',
+      message: 'Connecting to Lucas\'s servers',
       translucent: true,
       cssClass: 'custom-class custom-loading'
     });

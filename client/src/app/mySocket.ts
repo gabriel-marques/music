@@ -176,14 +176,20 @@ export class MySocket {
       backdropDismiss: true,
       mode: "ios",
       buttons: [{
-        text: 'Dummy server 1',
+        text: 'Dummy server 1 (should not exist, GUI demo only)',
         icon: 'musical-note',
         handler: () => {
           this.presentToast(this.translate.translateText("NOTIMPLEMENTEDYET"));
         }
       }, {
-        text: 'Dummy server 2',
+        text: 'Dummy server 2 (should not exist, GUI demo only)',
         icon: 'musical-note',
+        handler: () => {
+          this.presentToast(this.translate.translateText("NOTIMPLEMENTEDYET"));
+        }
+      }, {
+        text: this.translate.translateText("STARTSERVER"),
+        icon: 'rocket',
         handler: () => {
           this.presentToast(this.translate.translateText("NOTIMPLEMENTEDYET"));
         }
