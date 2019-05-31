@@ -22,7 +22,7 @@ export class TabAddPage {
 
   // send a track to server
   addTrack() {
-    if (this.track != "" && this.artist != "") {
+    if (this.track != "") {
       this.socket.sendNewMusic(this.track, this.artist);
       //this.localNotifications.requestPermission();
       this.track = '';
